@@ -105,7 +105,7 @@ return packer.startup(function(use)
 	})
 	use("rebelot/kanagawa.nvim")
 	use("sainnhe/gruvbox-material")
-	-- use("simonward87/drift.nvim")
+	use("simonward87/drift.nvim")
 
 	-- completion
 	use("hrsh7th/cmp-buffer") -- buffer completions
