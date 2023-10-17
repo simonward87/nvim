@@ -60,7 +60,6 @@ return packer.startup(function(use)
 		},
 	})
 	use("lewis6991/gitsigns.nvim") -- git info in sign column
-	use("lewis6991/impatient.nvim") -- speeds up loading lua modules
 	use("lukas-reineke/indent-blankline.nvim") -- add guide rules to indentation
 	use("mfussenegger/nvim-dap") -- debug adapter
 	use("moll/vim-bbye") -- improve buffer deletion behaviour
