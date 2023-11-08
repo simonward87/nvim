@@ -73,13 +73,6 @@ return packer.startup(function(use)
 	})
 	use("nvim-treesitter/nvim-treesitter-context") -- pin code context (current block)
 	use("nvim-treesitter/playground") -- view treesitter info
-	use({
-		"olexsmir/gopher.nvim",
-		requires = {
-			"nvim-lua/plenary.nvim",
-			"nvim-treesitter/nvim-treesitter",
-		},
-	})
 	use("tpope/vim-capslock") -- software capslock
 	use("tpope/vim-commentary") -- comment stuff out
 	use("tpope/vim-fugitive") -- git wrapper

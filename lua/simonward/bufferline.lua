@@ -135,6 +135,7 @@ bufferline.setup({
 				attribute = "bg",
 				highlight = "Normal",
 			},
+			italic = false,
 		},
 		numbers = {
 			fg = {
