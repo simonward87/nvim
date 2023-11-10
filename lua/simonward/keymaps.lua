@@ -108,7 +108,7 @@ map("n", "<leader>mh", [[:%s/\v\`([^`]+)\`/<code>\1<\/code>/g<CR>gv:s/\v\*{2}([^
 map("v", "<leader>mh", [[:s/\v\`([^`]+)\`/<code>\1<\/code>/g<CR>gv:s/\v\*{2}([^*]+)\*{2}/<strong>\1<\/strong>/g<CR>]]) -- Convert selection markdown bold and code to HTML bold and code
 
 -- Go convenience maps
-map("n", "<leader>j", 'vi}:norm A `json:""`<CR>vi}:lua vim.lsp.buf.format()<CR>`<$hi') -- Add empty json struct tags to all fields inside struct under cursor, and enter INSERT
+map("n", "<leader>t", 'vi}:norm A `json:""`<CR>vi}:lua vim.lsp.buf.format()<CR>`<$hi') -- Add empty json struct tags to all fields inside struct under cursor, and enter INSERT
 
 -- Convenience abbreviations
 vim.cmd("iabbrev @@ 39803787+simonward87@users.noreply.github.com")
