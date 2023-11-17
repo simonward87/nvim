@@ -167,3 +167,6 @@ OWASP
 px
 LSP
 submodule
+direnv
+js
+V8
