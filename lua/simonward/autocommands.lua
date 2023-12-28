@@ -23,6 +23,7 @@ local filetypes = {
 	"javascript.jsx",
 	"json",
 	"less",
+	"markdown",
 	"prisma",
 	"scss",
 	"svelte",
