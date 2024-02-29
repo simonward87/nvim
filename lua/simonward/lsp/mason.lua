@@ -1,14 +1,17 @@
 local servers = {
+	"arduino_language_server",
 	"astro",
 	"bashls",
 	"clangd",
 	"cssls",
 	"cssmodules_ls",
 	"denols",
+	"docker_compose_language_service",
 	"dockerls",
 	"gopls",
 	"graphql",
 	"html",
+	"jqls",
 	"jsonls",
 	"lua_ls",
 	"marksman",
@@ -20,10 +23,12 @@ local servers = {
 	"templ",
 	"tsserver",
 	"yamlls",
+	-- "awk_ls",
+	-- "htmx",
 }
 
 -- TODO
--- Currently only tracking lsp servers — add DAP, linters, and formatters too
+-- Currently only tracking language servers — add DAP, linters, and formatters too
 
 require("mason").setup({
 	ui = {
