@@ -1,5 +1,4 @@
-local c = "drift-darker"
-
+local c = "drift-dark"
 local custom_opts_loaded, _ = pcall(require, "simonward." .. c)
 
 if custom_opts_loaded then
@@ -13,4 +12,6 @@ else
 	end
 end
 
-vim.g["gruvbox_material_palette"] = "mix"
+if c == "gruvbox_material" then
+	vim.g["gruvbox_material_palette"] = "mix"
+end
