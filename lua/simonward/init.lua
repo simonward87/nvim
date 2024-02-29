@@ -1,17 +1,19 @@
 vim.loader.enable()
 
+-- config
 require("simonward.options")
 require("simonward.autocommands")
 require("simonward.keymaps")
 require("simonward.plugins")
 require("simonward.colorscheme")
 
+-- plugins
 require("simonward.autopairs")
 require("simonward.bufferline")
 require("simonward.cmp")
 require("simonward.colorizer")
 require("simonward.comment")
--- require("simonward.fidget")
+require("simonward.fidget")
 require("simonward.gitsigns")
 require("simonward.gopher")
 require("simonward.indent")
