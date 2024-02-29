@@ -115,7 +115,6 @@ return packer.startup(function(use)
 		use("b0o/SchemaStore.nvim") -- schemastore catalog access
 		use({
 			"j-hui/fidget.nvim", -- UI for nvim-lsp install progress
-			tag = "legacy",
 		})
 		use("jose-elias-alvarez/null-ls.nvim") -- for formatters and linters
 		use("neovim/nvim-lspconfig") -- enable LSP
