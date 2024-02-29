@@ -1,6 +1,7 @@
 vim.cmd("autocmd BufRead,BufNewFile go.mod setfiletype gomod") -- go.mod files incorrectly matched by default ('rapid')
 vim.cmd("autocmd BufRead,BufNewFile Caddyfile setfiletype caddyfile")
 vim.cmd("autocmd BufRead,BufNewFile Dockerfile.dev setfiletype dockerfile")
+vim.cmd("autocmd BufRead,BufNewFile *.gohtml setfiletype html")
 vim.cmd("autocmd BufRead,BufNewFile *.tmpl setfiletype html")
 vim.cmd("autocmd BufRead,BufNewFile *.templ setfiletype templ")
 vim.cmd("autocmd BufRead,BufNewFile zprofile setfiletype zsh")
