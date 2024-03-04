@@ -1,10 +1,10 @@
-vim.g["loaded_perl_provider"] = 0
 vim.g["loaded_netrw"] = 1
 vim.g["loaded_netrwPlugin"] = 1
 vim.g["skip_ts_context_commentstring_module"] = true
 
 if vim.loop.os_uname().sysname == "Darwin" then
-	vim.g["python3_host_prog"] = "/opt/homebrew/bin/python3"
+	vim.g["loaded_python3_provider"] = 0
+	-- vim.g["python3_host_prog"] = "/opt/homebrew/bin/python3"
 else
 	vim.g["python3_host_prog"] = "/usr/bin/python3"
 end
