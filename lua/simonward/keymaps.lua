@@ -18,9 +18,6 @@ vim.g.maplocalleader = " "
 -- | "t" | terminal     |
 -- | "c" | command      |
 
--- Temporary unbinds
-map("i", "<Tab>", "<Nop>")
-
 -- Window navigation
 map("n", "<Left>", "<C-w>h") -- Moves to left window
 map("n", "<Right>", "<C-w>l") -- Moves to right window
@@ -37,10 +34,11 @@ map("n", "<leader>nw", ":noa w<CR>") -- Saves without formatting
 -- Shift text blocks vertically
 map("x", "J", ":move '>+1<CR>gv-gv")
 map("x", "K", ":move '<-2<CR>gv-gv")
-map("i", "<C-j>", "<esc>:move .+1<CR>==a")
-map("i", "<C-k>", "<esc>:move .-2<CR>==a")
 map("n", "<leader>j", ":move .+1<CR>==")
 map("n", "<leader>k", ":move .-2<CR>==")
+-- disabled as rarely used and blocks default i_CTRL-J & i_CTRL-K
+-- map("i", "<C-j>", "<esc>:move .+1<CR>==a")
+-- map("i", "<C-k>", "<esc>:move .-2<CR>==a")
 
 -- Undo breakpoints
 map("i", ",", ",<c-g>u")
