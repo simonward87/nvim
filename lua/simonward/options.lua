@@ -1,6 +1,5 @@
 vim.opt.backup = false
 vim.opt.clipboard:append("unnamedplus")
--- vim.opt.cmdheight = 0 -- experimental, :h 'cmdheight'
 vim.opt.completeopt = {
 	"menuone",
 	"longest",
@@ -17,14 +16,15 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.ruler = false
 vim.opt.scrolloff = 4
+vim.opt.shiftwidth = 4
+vim.opt.showmode = false
 vim.opt.sidescrolloff = 4
 vim.opt.signcolumn = "yes"
 vim.opt.smartcase = true
 vim.opt.softtabstop = 4
-vim.opt.shiftwidth = 4
-vim.opt.showmode = false
 vim.opt.swapfile = false
-vim.opt.termguicolors = true
 vim.opt.tabstop = 4
+vim.opt.termguicolors = true
 vim.opt.undofile = true
 vim.opt.wrap = false
+-- vim.opt.cmdheight = 0 -- experimental, :h 'cmdheight'

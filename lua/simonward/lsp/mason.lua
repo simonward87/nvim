@@ -1,3 +1,10 @@
+local mason_status_ok, mason = pcall(require, "mason")
+if not mason_status_ok then
+	return
+end
+
+mason.setup({})
+
 local servers = {
 	"arduino_language_server",
 	"astro",
@@ -23,24 +30,14 @@ local servers = {
 	"templ",
 	"tsserver",
 	"yamlls",
-	-- "awk_ls",
-	-- "htmx",
 }
 
--- TODO
--- Currently only tracking language servers — add DAP, linters, and formatters too
+local mason_lspconfig_status_ok, mason_lspconfig = pcall(require, "mason-lspconfig")
+if not mason_lspconfig_status_ok then
+	return
+end
 
-require("mason").setup({
-	ui = {
-		icons = {
-			package_installed = "✓",
-			package_pending = "➜",
-			package_uninstalled = "✗",
-		},
-	},
-})
-
-require("mason-lspconfig").setup({
+mason_lspconfig.setup({
 	ensure_installed = servers,
 	automatic_installation = true,
 })
@@ -57,7 +54,6 @@ for _, server in pairs(servers) do
 		on_attach = require("simonward.lsp.handlers").on_attach,
 		capabilities = require("simonward.lsp.handlers").capabilities,
 	}
-
 	server = vim.split(server, "@")[1]
 
 	local require_ok, conf_opts = pcall(require, "simonward.lsp.settings." .. server)

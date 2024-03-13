@@ -4,27 +4,11 @@ local function map(mode, l, r, opts)
 	vim.keymap.set(mode, l, r, opts)
 end
 
--- Setup leader
-map("", "<Space>", "<Nop>")
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
-
--- | modes              |
--- |--------------------|
--- | "n" | normal       |
--- | "i" | insert       |
--- | "v" | visual       |
--- | "x" | visual block |
--- | "t" | terminal     |
--- | "c" | command      |
-
--- Window navigation
+-- Navigation
 map("n", "<Left>", "<C-w>h") -- Moves to left window
 map("n", "<Right>", "<C-w>l") -- Moves to right window
 map("n", "<Down>", "<C-w>j") -- Moves to window below
 map("n", "<Up>", "<C-w>k") -- Moves to window above
-
--- Buffer navigation
 map("n", "<C-n>", ":bn<CR>") -- Moves to next buffer
 map("n", "<C-p>", ":bp<CR>") -- Moves to previous buffer
 map("n", "<leader>d", ":bd<CR>") -- Deletes current buffer
@@ -36,9 +20,6 @@ map("x", "J", ":move '>+1<CR>gv-gv")
 map("x", "K", ":move '<-2<CR>gv-gv")
 map("n", "<leader>j", ":move .+1<CR>==")
 map("n", "<leader>k", ":move .-2<CR>==")
--- disabled as rarely used and blocks default i_CTRL-J & i_CTRL-K
--- map("i", "<C-j>", "<esc>:move .+1<CR>==a")
--- map("i", "<C-k>", "<esc>:move .-2<CR>==a")
 
 -- Undo breakpoints
 map("i", ",", ",<c-g>u")
@@ -46,25 +27,15 @@ map("i", ".", ".<c-g>u")
 map("i", "!", "!<c-g>u")
 map("i", "?", "?<c-g>u")
 
--- Autocenter when word searching
+-- Auto-centering
 map("n", "n", "nzzzv")
 map("n", "N", "Nzzzv")
 map("n", "J", "mzJ`z")
-
--- Autocenter when jumping
 map("n", "<C-d>", "<C-d>zz")
 map("n", "<C-u>", "<C-u>zz")
 
--- Reload colourschemes
-map("n", "<leader><CR>", ":source $NVIM_CONFIG/lua/$USER/colorscheme.lua<CR>")
-
 -- Toggle ColorColumn
 map("n", "<leader>cc", [[:execute "set cc=" . (&colorcolumn == "" ? "74" : "")<CR>]])
-
--- Avoid collision with tmux prefix
-map("n", "<C-c>", "<C-a>")
-map("v", "<C-c>", "<C-a>")
-map("v", "g<C-c>", "g<C-a>")
 
 -- Git
 map("n", "<leader>gs", ":G<CR>")
@@ -86,7 +57,6 @@ map("n", "-", ":NvimTreeToggle<CR>")
 
 -- Packages
 map("n", "<leader>um", ":Mason<CR>")
-map("n", "<leader>up", ":PackerSync<CR>")
 
 -- Commands
 map("n", "<leader>ll", ":!gls -Fho --group-directories-first<CR>")

@@ -4,6 +4,25 @@ if not status_ok then
 end
 
 configs.setup({
+	sync_install = false,
+	autopairs = {
+		enable = true,
+	},
+	autotag = {
+		enable = true,
+	},
+	highlight = {
+		enable = true,
+		disable = { "" },
+		additional_vim_regex_highlighting = false,
+	},
+	indent = {
+		enable = true,
+		disable = {
+			"prisma",
+			"yaml",
+		},
+	},
 	ensure_installed = {
 		"arduino",
 		"astro",
@@ -63,39 +82,4 @@ configs.setup({
 		"yaml",
 		"zig",
 	},
-
-	sync_install = false,
-
-	autopairs = {
-		enable = true,
-	},
-
-	autotag = {
-		enable = true,
-	},
-
-	highlight = {
-		enable = true,
-		disable = { "" },
-		additional_vim_regex_highlighting = false,
-	},
-
-	indent = {
-		enable = true,
-		disable = {
-			"prisma",
-			"yaml",
-		},
-	},
-
-	-- context_commentstring nvim-treesitter module is deprecated, use
-	-- require('ts_context_commentstring').setup {} and set
-	-- vim.g.skip_ts_context_commentstring_module = true to speed up
-	-- loading instead. This feature will be removed in
-	-- ts_context_commentstring version in the future
-
-	-- context_commentstring = {
-	-- 	enable = true,
-	-- 	enable_autocmd = false,
-	-- },
 })

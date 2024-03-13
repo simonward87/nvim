@@ -4,5 +4,5 @@ if not status_ok then
 end
 
 require("simonward.lsp.mason")
+require("simonward.lsp.mason-null-ls")
 require("simonward.lsp.handlers").setup()
-require("simonward.lsp.null-ls")
