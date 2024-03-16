@@ -1,11 +1,12 @@
 -- Custom file types
 local function fileTypeLink(matchPattern, filetype)
-    vim.cmd("autocmd BufRead,BufNewFile " .. matchPattern .. " setfiletype " .. filetype)
+	vim.cmd("autocmd BufRead,BufNewFile " .. matchPattern .. " setfiletype " .. filetype)
 end
 
 fileTypeLink("*.gohtml", "html")
 fileTypeLink("*.templ", "templ")
 fileTypeLink("*.tmpl", "html")
+fileTypeLink(".sqlfluff", "toml")
 fileTypeLink("Caddyfile", "caddyfile")
 fileTypeLink("Dockerfile.*", "dockerfile")
 fileTypeLink("go.mod", "gomod")
@@ -13,7 +14,7 @@ fileTypeLink("zprofile", "zsh")
 
 -- File type options
 local function fileTypeOpts(filetype, opts)
-    vim.cmd("autocmd FileType " .. filetype .. " setlocal " .. opts)
+	vim.cmd("autocmd FileType " .. filetype .. " setlocal " .. opts)
 end
 
 fileTypeOpts("caddyfile", "noexpandtab softtabstop=0 shiftwidth=4 tabstop=4")
@@ -47,7 +48,7 @@ local filetypes = {
 }
 
 for i = 1, #filetypes do
-    fileTypeOpts(filetypes[i], "softtabstop=2 shiftwidth=2 tabstop=2")
+	fileTypeOpts(filetypes[i], "softtabstop=2 shiftwidth=2 tabstop=2")
 end
 
 -- :H <topic> for full-screen help
