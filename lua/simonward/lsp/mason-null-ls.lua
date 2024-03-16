@@ -42,6 +42,17 @@ null_ls.setup({
 			extra_args = { "--jsx-single-quote" },
 			extra_filetypes = { "astro", "svelte" },
 		}),
+		formatting.sqlfluff.with({
+			-- args defines the default execution command
+			args = {
+				"fix",
+				"--disable-progress-bar",
+				"--nocolor",
+				"-",
+			},
+			-- extra_args defines optional settings
+			extra_args = { "--dialect", "postgres" },
+		}),
 		formatting.stylua,
 		formatting.tidy,
 	},
@@ -61,6 +72,7 @@ end
 mason_null_ls.setup({
 	automatic_installation = true,
 	handlers = {
+		-- overwrites default handler
 		function() end,
 	},
 	ensure_installed = {
@@ -79,6 +91,7 @@ mason_null_ls.setup({
 		"prettierd",
 		"proselint",
 		"selene",
+		"sqlfluff",
 		"staticcheck",
 		"tidy",
 		"vacuum",
