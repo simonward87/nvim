@@ -1,0 +1,2 @@
+# references 5.1 stdlib and the custom rules found in ./nvim.yaml
+std = "lua51+nvim"
