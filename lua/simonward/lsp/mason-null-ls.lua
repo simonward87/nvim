@@ -13,6 +13,7 @@ null_ls.setup({
 	sources = {
 		diagnostics.buf,
 		diagnostics.commitlint,
+		diagnostics.dotenv_linter,
 		diagnostics.gitlint,
 		diagnostics.golangci_lint,
 		diagnostics.proselint,
@@ -82,6 +83,7 @@ mason_null_ls.setup({
 		"cmake_lint",
 		"commitlint",
 		"delve",
+		"dotenv_linter",
 		"firefox-debug-adapter",
 		"gitlint",
 		"go-debug-adapter",
