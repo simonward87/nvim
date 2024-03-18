@@ -6,6 +6,7 @@ end
 fileTypeLink("*.gohtml", "html")
 fileTypeLink("*.templ", "templ")
 fileTypeLink("*.tmpl", "html")
+fileTypeLink(".envrc", "sh")
 fileTypeLink(".sqlfluff", "toml")
 fileTypeLink("Caddyfile", "caddyfile")
 fileTypeLink("Dockerfile.*", "dockerfile")
