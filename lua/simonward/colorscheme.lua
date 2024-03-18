@@ -1,4 +1,4 @@
-local c = "drift-darker"
+local c = "drift-light"
 local custom_config = pcall(require, "simonward.colors." .. c)
 
 if not custom_config then

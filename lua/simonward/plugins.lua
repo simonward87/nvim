@@ -40,6 +40,8 @@ packer.init({
 return packer.startup(function(use)
 	-- Local plugins
 	use("~/Work/projects/plugins/nvim/drift.nvim") -- simonward87/drift.nvim
+	use("~/Work/projects/plugins/nvim/nameless.nvim") -- simonward87/drift.nvim
+	use("~/Work/projects/plugins/nvim/monoLemon.nvim") -- simonward87/drift.nvim
 	use("~/Work/projects/plugins/nvim/nvim-autopairs") -- simonward87/nvim-autopairs
 
 	use("akinsho/bufferline.nvim") -- bufferline along top of window
