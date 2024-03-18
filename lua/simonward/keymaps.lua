@@ -57,6 +57,7 @@ map("n", "-", ":NvimTreeToggle<CR>")
 
 -- Packages
 map("n", "<leader>um", ":Mason<CR>")
+map("n", "<leader>up", ":PackerSync<CR>")
 
 -- Commands
 map("n", "<leader>ll", ":!gls -Fho --group-directories-first<CR>")
