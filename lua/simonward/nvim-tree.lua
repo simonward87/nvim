@@ -104,6 +104,7 @@ nvim_tree.setup({
 	filters = {
 		custom = {
 			"^.git$",
+			"^node_modules$",
 		},
 	},
 	on_attach = M.on_attach,
