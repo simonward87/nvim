@@ -38,12 +38,6 @@ packer.init({
 })
 
 return packer.startup(function(use)
-	-- Local plugins
-	use("~/Work/projects/plugins/nvim/drift.nvim") -- simonward87/drift.nvim
-	use("~/Work/projects/plugins/nvim/nameless.nvim") -- simonward87/drift.nvim
-	use("~/Work/projects/plugins/nvim/monoLemon.nvim") -- simonward87/drift.nvim
-	use("~/Work/projects/plugins/nvim/nvim-autopairs") -- simonward87/nvim-autopairs
-
 	use("akinsho/bufferline.nvim") -- bufferline along top of window
 	use("JoosepAlviste/nvim-ts-context-commentstring") -- simple code commenting
 	use({ "nvim-tree/nvim-tree.lua", requires = { "nvim-tree/nvim-web-devicons" } }) -- file explorer
@@ -63,10 +57,7 @@ return packer.startup(function(use)
 	use("tpope/vim-surround") -- streamline surroundings workflow
 	use("wbthomason/packer.nvim") -- Let packer manage itself
 	use("windwp/nvim-ts-autotag") -- auto-close & auto-rename html tags
-	-- use({
-	-- 	"windwp/nvim-autopairs",
-	-- 	event = "InsertEnter",
-	-- }) -- autopairs with cmp and treesitter integration
+	use("windwp/nvim-autopairs") -- autopairs with cmp and treesitter integration
 
 	-- Colorschemes
 	use("axvr/photon.vim")
@@ -95,6 +86,10 @@ return packer.startup(function(use)
 
 	-- LSP
 	if vim.loop.os_uname().sysname == "Darwin" then
+		use("~/Work/projects/plugins/nvim/drift.nvim") -- simonward87/drift.nvim
+		use("~/Work/projects/plugins/nvim/nameless.nvim")
+		use("~/Work/projects/plugins/nvim/monoLemon.nvim")
+
 		use("b0o/SchemaStore.nvim") -- schemastore catalog access
 		use({
 			"jay-babu/mason-null-ls.nvim", -- for formatters and linters
@@ -108,7 +103,10 @@ return packer.startup(function(use)
 		use("tamago324/nlsp-settings.nvim") -- language server settings defined in json for
 		use("williamboman/mason.nvim") -- package manager
 		use("williamboman/mason-lspconfig.nvim") -- package manager
+	elseif vim.loop.os_uname().sysname == "Linux" then
+		use("simonward87/drift.nvim")
 	end
+
 
 	-- Automatically set up configuration after cloning packer
 	-- NOTE: must run after all plugins
