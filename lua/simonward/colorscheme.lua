@@ -1,3 +1,3 @@
-local c = "drift-light"
+local c = "drift-lighter"
 
 vim.cmd("colorscheme " .. c)
