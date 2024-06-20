@@ -5,7 +5,7 @@ end
 
 gitsigns.setup({
 	signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
-	numhl = false, -- Toggle with `:Gitsigns toggle_numhl`
+	numhl = false,  -- Toggle with `:Gitsigns toggle_numhl`
 	linehl = false, -- Toggle with `:Gitsigns toggle_linehl`
 	word_diff = false, -- Toggle with `:Gitsigns toggle_word_diff`
 	watch_gitdir = {
@@ -20,9 +20,6 @@ gitsigns.setup({
 		delay = 1000,
 		ignore_whitespace = false,
 	},
-	current_line_blame_formatter_opts = {
-		relative_time = false,
-	},
 	sign_priority = 6,
 	update_debounce = 100,
 	status_formatter = nil, -- Use default
@@ -34,9 +31,6 @@ gitsigns.setup({
 		relative = "cursor",
 		row = 0,
 		col = 1,
-	},
-	yadm = {
-		enable = false,
 	},
 	on_attach = function(bufnr)
 		local function map(mode, l, r, opts)
