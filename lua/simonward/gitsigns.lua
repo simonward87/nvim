@@ -4,8 +4,9 @@ if not status_ok then
 end
 
 gitsigns.setup({
-	signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
-	numhl = false,  -- Toggle with `:Gitsigns toggle_numhl`
+	culhl = true,
+	signcolumn = false, -- Toggle with `:Gitsigns toggle_signs`
+	numhl = false, -- Toggle with `:Gitsigns toggle_numhl`
 	linehl = false, -- Toggle with `:Gitsigns toggle_linehl`
 	word_diff = false, -- Toggle with `:Gitsigns toggle_word_diff`
 	watch_gitdir = {
@@ -40,5 +41,6 @@ gitsigns.setup({
 		end
 
 		map("n", "<leader>ts", gitsigns.toggle_linehl)
+		map("n", "<leader>tb", gitsigns.toggle_current_line_blame)
 	end,
 })

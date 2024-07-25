@@ -137,9 +137,10 @@ nvim_tree.setup({
 		root_folder_label = false,
 	},
 	view = {
-		width = 40,
 		number = true,
 		relativenumber = true,
+		signcolumn = "auto",
+		width = 40,
 	},
 })
 
