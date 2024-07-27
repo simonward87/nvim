@@ -13,19 +13,6 @@ fileTypeLink("Dockerfile.*", "dockerfile")
 fileTypeLink("go.mod", "gomod")
 fileTypeLink("zprofile", "zsh")
 
--- File type options
-local function fileTypeOpts(filetype, opts)
-	vim.cmd("autocmd FileType " .. filetype .. " setlocal " .. opts)
-end
-
-fileTypeOpts("caddyfile", "noexpandtab softtabstop=0 shiftwidth=4 tabstop=4")
-fileTypeOpts("gitcommit", "wrap spell textwidth=72")
-fileTypeOpts("go", "noexpandtab")
-fileTypeOpts("lua", "noexpandtab")
-fileTypeOpts("make", "noexpandtab softtabstop=0 shiftwidth=8 tabstop=8")
-fileTypeOpts("markdown", "wrap linebreak spell")
-fileTypeOpts("prisma", "cindent")
-
 -- 2-space indentation
 local filetypes = {
 	"astro",
@@ -49,7 +36,7 @@ local filetypes = {
 }
 
 for i = 1, #filetypes do
-	fileTypeOpts(filetypes[i], "softtabstop=2 shiftwidth=2 tabstop=2")
+	vim.cmd("autocmd FileType " .. filetypes[i] .. " setlocal softtabstop=2 shiftwidth=2 tabstop=2")
 end
 
 -- :H <topic> for full-screen help
