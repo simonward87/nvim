@@ -52,10 +52,10 @@ map(
 )
 map("n", "<c-t>", "<cmd>Telescope live_grep<CR>")
 
--- Nvim-tree
+-- File explorer
 map("n", "-", ":NvimTreeToggle<CR>")
 
--- Packages
+-- Package management
 map("n", "<leader>um", ":Mason<CR>")
 map("n", "<leader>up", ":PackerSync<CR>")
 
@@ -65,19 +65,6 @@ map("n", "<leader>la", ":!gls -AFho --group-directories-first<CR>")
 
 -- Under cursor TS capture group
 map("n", "<C-e>", ":TSHighlightCapturesUnderCursor<CR>")
-
--- Markdown convenience maps
-map("n", "<leader>cl", "viw<esc>bi[<esc>ea]()<esc>i") -- Markdown format word under cursor as url, and enter INSERT
-map("v", "<leader>cl", "<esc>`>a]<esc>`<<esc>i[<esc>%a()<esc>i") -- Markdown format selection as url, and enter INSERT
-map("n", "<leader>cL", "viw<esc>bi[<esc>ea](<C-r>+)<esc>") -- Markdown format word under cursor as url, and populate from unnamed register
-map("v", "<leader>cL", "<esc>`>a]<esc>`<<esc>i[<esc>%a(<C-r>+)<esc>") -- Markdown format selection as url, and populate from unnamed register
-map("n", "<leader>cb", "viw<esc>bi**<esc>ea**<esc>") -- Markdown format word under cursor as bold
-map("v", "<leader>cb", "<esc>`>a**<esc>`<<esc>i**<esc>`><esc>ll") -- Markdown format selection as bold
-map("n", "<leader>mh", [[:%s/\v\`([^`]+)\`/<code>\1<\/code>/g<CR>gv:s/\v\*{2}([^*]+)\*{2}/<strong>\1<\/strong>/g<CR>]]) -- Convert all markdown bold and code to HTML bold and code
-map("v", "<leader>mh", [[:s/\v\`([^`]+)\`/<code>\1<\/code>/g<CR>gv:s/\v\*{2}([^*]+)\*{2}/<strong>\1<\/strong>/g<CR>]]) -- Convert selection markdown bold and code to HTML bold and code
-
--- Go convenience maps
--- map("n", "<leader>t", 'vi}:norm A `json:""`<CR>vi}:lua vim.lsp.buf.format()<CR>`<$hi') -- Add empty json struct tags to all fields inside struct under cursor, and enter INSERT
 
 -- Convenience abbreviations
 vim.cmd("iabbrev @@ 39803787+simonward87@users.noreply.github.com")

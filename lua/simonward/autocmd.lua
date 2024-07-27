@@ -1,20 +1,11 @@
--- Custom file types
-local function fileTypeLink(matchPattern, filetype)
-	vim.cmd("autocmd BufRead,BufNewFile " .. matchPattern .. " setfiletype " .. filetype)
-end
+-- :H <topic> for full-screen help
+vim.cmd("command! -nargs=1 -complete=help H h <args> | only")
 
-fileTypeLink("*.gohtml", "html")
-fileTypeLink("*.templ", "templ")
-fileTypeLink("*.tmpl", "html")
-fileTypeLink(".envrc", "sh")
-fileTypeLink(".sqlfluff", "toml")
-fileTypeLink("Caddyfile", "caddyfile")
-fileTypeLink("Dockerfile.*", "dockerfile")
-fileTypeLink("go.mod", "gomod")
-fileTypeLink("zprofile", "zsh")
+local augroup = vim.api.nvim_create_augroup
+local autocmd = vim.api.nvim_create_autocmd
 
--- 2-space indentation
-local filetypes = {
+-- Filetypes that use 2-space indentation
+local ft = {
 	"astro",
 	"css",
 	"graphql",
@@ -35,15 +26,9 @@ local filetypes = {
 	"yaml",
 }
 
-for i = 1, #filetypes do
-	vim.cmd("autocmd FileType " .. filetypes[i] .. " setlocal softtabstop=2 shiftwidth=2 tabstop=2")
+for i = 1, #ft do
+	vim.cmd("autocmd FileType " .. ft[i] .. " setlocal softtabstop=2 shiftwidth=2 tabstop=2")
 end
-
--- :H <topic> for full-screen help
-vim.cmd("command! -nargs=1 -complete=help H h <args> | only")
-
-local augroup = vim.api.nvim_create_augroup
-local autocmd = vim.api.nvim_create_autocmd
 
 -- Highlight selection on yank
 autocmd("TextYankPost", {

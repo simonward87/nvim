@@ -95,6 +95,13 @@ return packer.startup(function(use)
 	use("nvim-treesitter/playground") -- View treesitter info
 	use("rafamadriz/friendly-snippets") -- Snippet library
 	use("saadparwaiz1/cmp_luasnip") -- Snippet completions
+	use({
+		"simondrake/gomodifytags",
+		requires = {
+			"nvim-treesitter/nvim-treesitter",
+			run = ":TSUpdate",
+		},
+	})
 	use("tpope/vim-capslock") -- Software capslock
 	use("tpope/vim-commentary") -- Comment stuff out
 	use("tpope/vim-fugitive") -- Git wrapper

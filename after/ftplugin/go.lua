@@ -1,3 +1,8 @@
 vim.opt_local.expandtab = false
 
-vim.print("testing, testing, 1, 2, 3...")
+vim.keymap.set(
+	"n",
+	"<leader>st",
+	"<cmd>lua require'gomodifytags'.GoAddTags('json')<CR>",
+	{ noremap = true, silent = true, buffer = 0 }
+)
