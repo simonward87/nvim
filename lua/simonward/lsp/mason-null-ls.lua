@@ -19,7 +19,6 @@ null_ls.setup({
 		diagnostics.selene,
 		diagnostics.staticcheck,
 		diagnostics.vacuum,
-		diagnostics.tidy,
 		diagnostics.yamllint,
 		diagnostics.zsh,
 
@@ -54,7 +53,6 @@ null_ls.setup({
 			extra_args = { "--dialect", "postgres" },
 		}),
 		formatting.stylua,
-		formatting.tidy,
 	},
 	on_attach = function()
 		vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.format()")
@@ -93,7 +91,6 @@ mason_null_ls.setup({
 		"selene",
 		"sqlfluff",
 		"staticcheck",
-		"tidy",
 		"vacuum",
 		"yamllint",
 		"zsh",
