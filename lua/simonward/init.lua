@@ -13,6 +13,7 @@ require("simonward.plugins")
 require("simonward.colorscheme")
 
 require("simonward.autopairs")
+require("simonward.autotag")
 require("simonward.bufferline")
 require("simonward.colorizer")
 require("simonward.comment")
