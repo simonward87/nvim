@@ -28,7 +28,7 @@ local servers = {
 	"svelte",
 	"tailwindcss",
 	"templ",
-	"tsserver",
+	"ts_ls",
 	"yamlls",
 }
 
