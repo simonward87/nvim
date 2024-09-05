@@ -27,6 +27,7 @@ null_ls.setup({
 		formatting.prettierd.with({
 			filetypes = {
 				"css",
+				"html",
 				"graphql",
 				"javascript",
 				"javascriptreact",
