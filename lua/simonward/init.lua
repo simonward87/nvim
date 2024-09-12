@@ -26,7 +26,7 @@ require("simonward.telescope")
 require("simonward.treesitter")
 require("simonward.treesitter-ctx")
 
-if vim.uv.os_uname().sysname == "Darwin" then
+if sysname == "Darwin" then -- sysname defined in $NVIM_CONF/init.lua
 	require("simonward.cmp")
 	require("simonward.lsp")
 end

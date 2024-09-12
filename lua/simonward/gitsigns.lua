@@ -4,7 +4,7 @@ if not status_ok then
 end
 
 gitsigns.setup({
-	culhl = true,
+	-- culhl = true,
 	signcolumn = false, -- Toggle with `:Gitsigns toggle_signs`
 	numhl = false, -- Toggle with `:Gitsigns toggle_numhl`
 	linehl = false, -- Toggle with `:Gitsigns toggle_linehl`
