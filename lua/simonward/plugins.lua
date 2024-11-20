@@ -95,7 +95,4 @@ pckr.add({
 pckr.setup({
 	autoremove = true, -- Remove unused plugins
 	autoinstall = true, -- Auto install plugins
-	-- lockfile = {
-	--   path = util.join_paths(vim.fn.stdpath('config', 'pckr', 'lockfile.lua'))
-	-- }
 })
