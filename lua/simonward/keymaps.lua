@@ -56,8 +56,8 @@ map("n", "<c-t>", "<cmd>Telescope live_grep<CR>")
 map("n", "-", ":NvimTreeToggle<CR>")
 
 -- Package management
-map("n", "<leader>um", ":Mason<CR>")
-map("n", "<leader>up", ":PackerSync<CR>")
+map("n", "<leader>um", ":MasonUpdate<CR>")
+map("n", "<leader>up", ":Pckr sync<CR>")
 
 -- Commands
 map("n", "<leader>ll", ":!gls -Fho --group-directories-first<CR>")
