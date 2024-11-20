@@ -1,8 +1,3 @@
-local status_ok, _ = pcall(require, "packer")
-if not status_ok then
-	return
-end
-
 return {
 	settings = {
 		json = {

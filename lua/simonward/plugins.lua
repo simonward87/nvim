@@ -1,118 +1,101 @@
--- Auto-install
-local ensure_packer = function()
-	local fn = vim.fn
-	local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-	if fn.empty(fn.glob(install_path)) > 0 then
-		fn.system({
+local function bootstrap_pckr()
+	local pckr_path = vim.fn.stdpath("data") .. "/pckr/pckr.nvim"
+
+	if not (vim.uv or vim.loop).fs_stat(pckr_path) then
+		vim.fn.system({
 			"git",
 			"clone",
-			"--depth",
-			"1",
-			"https://github.com/wbthomason/packer.nvim",
-			install_path,
+			"--filter=blob:none",
+			"https://github.com/lewis6991/pckr.nvim",
+			pckr_path,
 		})
-		vim.cmd([[packadd packer.nvim]])
-		return true
 	end
-	return false
+
+	vim.opt.rtp:prepend(pckr_path)
 end
 
-local packer_bootstrap = ensure_packer()
+bootstrap_pckr()
 
--- Reload on file change
-vim.cmd([[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerSync
-  augroup end
-]])
-
-local status_ok, packer = pcall(require, "packer")
+local status_ok, pckr = pcall(require, "pckr")
 if not status_ok then
 	return
 end
 
--- Use popup window
-packer.init({
-	display = {
-		open_fn = function()
-			return require("packer.util").float({ border = "solid" })
-		end,
-		prompt_border = "solid",
-	},
-})
+if (vim.uv or vim.loop).os_uname().sysname == "Darwin" then
+	pckr.add({
+		"~/Work/projects/plugins/nvim/drift.nvim",
+		"~/Work/projects/plugins/nvim/nameless.nvim",
+		"~/Work/projects/plugins/nvim/monoLemon.nvim",
 
-return packer.startup(function(use)
-	if vim.loop.os_uname().sysname == "Darwin" then
-		use("~/Work/projects/plugins/nvim/drift.nvim")
-		use("~/Work/projects/plugins/nvim/nameless.nvim")
-		use("~/Work/projects/plugins/nvim/monoLemon.nvim")
-
-		use("b0o/SchemaStore.nvim") -- Schemastore catalog access
-		use({
+		"b0o/SchemaStore.nvim", -- Schemastore catalog access
+		{
 			"jay-babu/mason-null-ls.nvim", -- Formatters and linters
 			requires = {
 				"williamboman/mason.nvim",
 				"nvimtools/none-ls.nvim",
 			},
-		})
-		use("neovim/nvim-lspconfig") -- Enable LSP
-		use("sago35/tinygo.vim") -- Tinygo extension
-		use("tamago324/nlsp-settings.nvim") -- Json lsp config parser
-		use("williamboman/mason.nvim") -- Package manager
-		use("williamboman/mason-lspconfig.nvim") -- Package manager
-	else
-		use("simonward87/drift.nvim")
-	end
+		},
+		"neovim/nvim-lspconfig", -- Enable LSP
+		"sago35/tinygo.vim", -- Tinygo extension
+		"tamago324/nlsp-settings.nvim", -- Json lsp config parser
+		"williamboman/mason.nvim", -- Package manager
+		"williamboman/mason-lspconfig.nvim", -- Package manager
+	})
+else
+	pckr.add({
+		"simonward87/drift.nvim",
+	})
+end
 
-	use("JoosepAlviste/nvim-ts-context-commentstring") -- Code commenting
-	use("L3MON4D3/LuaSnip") -- Snippet engine
-	use("akinsho/bufferline.nvim") -- List buffers along top
-	use("hrsh7th/cmp-buffer") -- Buffer completions
-	use("hrsh7th/cmp-cmdline") -- Cmdline completions
-	use("hrsh7th/cmp-nvim-lsp") -- LSP completions
-	use("hrsh7th/cmp-nvim-lua") -- Neovim lua completions
-	use("hrsh7th/cmp-path") -- Path completions
-	use("hrsh7th/nvim-cmp") -- Completion
-	use("lewis6991/gitsigns.nvim") -- Sign column git info
-	use("lukas-reineke/indent-blankline.nvim") -- Indentation guide lines
-	use("mfussenegger/nvim-dap") -- Debug adapter
-	use("norcalli/nvim-colorizer.lua") -- Hex code colourizer
-	use("nvim-lua/popup.nvim") -- Popup API
-	use({
+pckr.add({
+	"JoosepAlviste/nvim-ts-context-commentstring", -- Code commenting
+	"L3MON4D3/LuaSnip", -- Snippet engine
+	"akinsho/bufferline.nvim", -- List buffers along top
+	"hrsh7th/cmp-buffer", -- Buffer completions
+	"hrsh7th/cmp-cmdline", -- Cmdline completions
+	"hrsh7th/cmp-nvim-lsp", -- LSP completions
+	"hrsh7th/cmp-nvim-lua", -- Neovim lua completions
+	"hrsh7th/cmp-path", -- Path completions
+	"hrsh7th/nvim-cmp", -- Completion
+	"lewis6991/gitsigns.nvim", -- Sign column git info
+	"lukas-reineke/indent-blankline.nvim", -- Indentation guide lines
+	"mfussenegger/nvim-dap", -- Debug adapter
+	"norcalli/nvim-colorizer.lua", -- Hex code colourizer
+	"nvim-lua/popup.nvim", -- Popup API
+	{
 		"nvim-telescope/telescope.nvim",
 		requires = { "nvim-lua/plenary.nvim" },
-	}) -- Fuzzy finder
-	use({
+	}, -- Fuzzy finder
+	{
 		"nvim-tree/nvim-tree.lua",
 		requires = { "nvim-tree/nvim-web-devicons" },
-	}) -- File explorer
-	use({
+	}, -- File explorer
+	{
 		"nvim-treesitter/nvim-treesitter",
 		run = ":TSUpdate",
-	})
-	use("nvim-treesitter/nvim-treesitter-context") -- Pin code context (current block)
-	use("nvim-treesitter/playground") -- View treesitter info
-	use("rafamadriz/friendly-snippets") -- Snippet library
-	use("saadparwaiz1/cmp_luasnip") -- Snippet completions
-	use({
+	},
+	"nvim-treesitter/nvim-treesitter-context", -- Pin code context (current block)
+	"nvim-treesitter/playground", -- View treesitter info
+	"rafamadriz/friendly-snippets", -- Snippet library
+	"saadparwaiz1/cmp_luasnip", -- Snippet completions
+	{
 		"simondrake/gomodifytags",
 		requires = {
 			"nvim-treesitter/nvim-treesitter",
 			run = ":TSUpdate",
 		},
-	})
-	use("tpope/vim-capslock") -- Software capslock
-	use("tpope/vim-commentary") -- Comment stuff out
-	use("tpope/vim-fugitive") -- Git wrapper
-	use("tpope/vim-surround") -- Streamline surroundings workflow
-	use("wbthomason/packer.nvim") -- Let packer manage itself
-	use("windwp/nvim-autopairs") -- Autopairs with cmp and treesitter integration
-	use("windwp/nvim-ts-autotag") -- Auto-close & auto-rename html tags
+	},
+	"tpope/vim-capslock", -- Software capslock
+	"tpope/vim-fugitive", -- Git wrapper
+	"tpope/vim-surround", -- Streamline surroundings workflow
+	"windwp/nvim-autopairs", -- Autopairs with cmp and treesitter integration
+	"windwp/nvim-ts-autotag", -- Auto-close & auto-rename html tags
+})
 
-	-- Automatically set up configuration after cloning packer
-	-- NOTE: must run after all plugins
-	if packer_bootstrap then
-		require("packer").sync()
-	end
-end)
+pckr.setup({
+	autoremove = true, -- Remove unused plugins
+	autoinstall = true, -- Auto install plugins
+	-- lockfile = {
+	--   path = util.join_paths(vim.fn.stdpath('config', 'pckr', 'lockfile.lua'))
+	-- }
+})

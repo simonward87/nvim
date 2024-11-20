@@ -29,7 +29,6 @@ local servers = {
 	"tailwindcss",
 	"templ",
 	"ts_ls",
-	"yamlls",
 }
 
 local mason_lspconfig_status_ok, mason_lspconfig = pcall(require, "mason-lspconfig")

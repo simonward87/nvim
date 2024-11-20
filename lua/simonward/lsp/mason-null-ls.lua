@@ -17,7 +17,6 @@ null_ls.setup({
 		diagnostics.golangci_lint,
 		diagnostics.selene,
 		diagnostics.staticcheck,
-		diagnostics.vacuum,
 		diagnostics.yamllint,
 		diagnostics.zsh,
 
@@ -90,7 +89,6 @@ mason_null_ls.setup({
 		"selene",
 		"sqlfluff",
 		"staticcheck",
-		"vacuum",
 		"yamllint",
 		"zsh",
 	},
