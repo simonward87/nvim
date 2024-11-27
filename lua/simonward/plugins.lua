@@ -23,7 +23,7 @@ end
 
 if (vim.uv or vim.loop).os_uname().sysname == "Darwin" then
 	pckr.add({
-		"~/Work/projects/plugins/nvim/drift.nvim",
+		"~/Work/projects/plugins/nvim/k.nvim",
 		"~/Work/projects/plugins/nvim/nameless.nvim",
 		"~/Work/projects/plugins/nvim/monoLemon.nvim",
 
@@ -43,7 +43,7 @@ if (vim.uv or vim.loop).os_uname().sysname == "Darwin" then
 	})
 else
 	pckr.add({
-		"simonward87/drift.nvim",
+		"simonward87/k.nvim",
 	})
 end
 
