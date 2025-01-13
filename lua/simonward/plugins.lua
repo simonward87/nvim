@@ -22,9 +22,11 @@ if not status_ok then
 end
 
 if (vim.uv or vim.loop).os_uname().sysname == "Darwin" then
+	local plugins = "~/Work/projects/plugins/nvim/"
 	pckr.add({
-		"~/Work/projects/plugins/nvim/k",
-		"~/Work/projects/plugins/nvim/monoLemon",
+		plugins .. "k",
+		plugins .. "monoLemon",
+		plugins .. "unnamed",
 
 		"b0o/SchemaStore.nvim", -- Schemastore catalog access
 		{
