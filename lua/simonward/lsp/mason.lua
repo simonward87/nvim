@@ -5,7 +5,7 @@ end
 
 mason.setup({})
 
-local servers = {
+local ensure_installed = {
 	"arduino_language_server",
 	"astro",
 	"bashls",
@@ -37,8 +37,9 @@ if not mason_lspconfig_status_ok then
 end
 
 mason_lspconfig.setup({
-	ensure_installed = servers,
+	automatic_enable = false,
 	automatic_installation = true,
+	ensure_installed = ensure_installed,
 })
 
 local lspconfig_status_ok, lspconfig = pcall(require, "lspconfig")
@@ -46,10 +47,8 @@ if not lspconfig_status_ok then
 	return
 end
 
-local opts = {}
-
-for _, server in pairs(servers) do
-	opts = {
+for _, server in pairs(ensure_installed) do
+	local opts = {
 		on_attach = require("simonward.lsp.handlers").on_attach,
 		capabilities = require("simonward.lsp.handlers").capabilities,
 	}

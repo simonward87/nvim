@@ -12,8 +12,6 @@ null_ls.setup({
 	debug = false,
 	sources = {
 		diagnostics.buf,
-		diagnostics.commitlint,
-		diagnostics.gitlint,
 		diagnostics.golangci_lint,
 		diagnostics.selene,
 		diagnostics.staticcheck,
@@ -54,7 +52,10 @@ null_ls.setup({
 		formatting.stylua,
 	},
 	on_attach = function()
-		vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.format()")
+		vim.api.nvim_create_autocmd("BufWritePre", {
+			group = vim.api.nvim_create_augroup("FormatBufferOnWrite", { clear = true }),
+			callback = vim.lsp.buf.format,
+		})
 	end,
 })
 
@@ -77,10 +78,8 @@ mason_null_ls.setup({
 		"chrome-debug-adapter",
 		"clang_format",
 		"cmake_lint",
-		"commitlint",
 		"delve",
 		"firefox-debug-adapter",
-		"gitlint",
 		"go-debug-adapter",
 		"golangci_lint", -- also try revive
 		"js-debug-adapter",

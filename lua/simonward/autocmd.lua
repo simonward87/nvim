@@ -1,11 +1,10 @@
 -- :H <topic> for full-screen help
 vim.cmd("command! -nargs=1 -complete=help H h <args> | only")
 
-local augroup = vim.api.nvim_create_augroup
-local autocmd = vim.api.nvim_create_autocmd
+local create_augroup = vim.api.nvim_create_augroup
+local create_autocmd = vim.api.nvim_create_autocmd
 
--- Filetypes that use 2-space indentation
-local ft = {
+local two_space_indented_filetypes = {
 	"astro",
 	"css",
 	"graphql",
@@ -26,52 +25,46 @@ local ft = {
 	"yaml",
 }
 
-for i = 1, #ft do
-	vim.cmd("autocmd FileType " .. ft[i] .. " setlocal softtabstop=2 shiftwidth=2 tabstop=2")
+for _, filetype in ipairs(two_space_indented_filetypes) do
+	create_autocmd("FileType", {
+		pattern = filetype,
+		callback = function()
+			vim.opt_local.shiftwidth = 2
+			vim.opt_local.softtabstop = 2
+			vim.opt_local.tabstop = 2
+		end,
+	})
 end
 
--- Highlight selection on yank
-autocmd("TextYankPost", {
-	group = augroup("HighlightYank", { clear = true }),
-	pattern = "*",
+create_autocmd("TextYankPost", {
+	group = create_augroup("HighlightSelectionOnYank", { clear = true }),
 	callback = function()
-		vim.highlight.on_yank({
+		vim.hl.on_yank({
 			higroup = "IncSearch",
-			timeout = 200,
+			timeout = 320,
 		})
 	end,
 })
 
--- Hide IncSearch on entering INSERT
-autocmd("InsertEnter", {
-	group = augroup("IncSearchHideOnInsert", { clear = true }),
-	pattern = "*",
+create_autocmd("InsertEnter", {
+	group = create_augroup("HideIncSearchOnInsert", { clear = true }),
 	callback = function()
-		vim.cmd("setlocal nohlsearch")
-	end,
-})
-autocmd("InsertLeave", {
-	group = augroup("IncSearchShowOnEsc", { clear = true }),
-	pattern = "*",
-	callback = function()
-		vim.cmd("setlocal hlsearch lazyredraw")
+		print("")
+		vim.opt_local.hlsearch = false
 	end,
 })
 
--- Tidy imports on .go file save
-autocmd("BufWritePost", {
-	group = augroup("TidyGoImports", { clear = true }),
-	pattern = "*.go",
+create_autocmd("InsertLeave", {
+	group = create_augroup("ResetIncSearchOnEsc", { clear = true }),
 	callback = function()
-		vim.cmd('silent exe "!goimports -w %:p"')
+		vim.opt_local.hlsearch = true
+		vim.opt_local.lazyredraw = true
 	end,
 })
 
--- Clear command line output after CursorHold timeout
-autocmd("CursorHold", {
-	group = augroup("ClearCmdAfterTimeout", { clear = true }),
-	pattern = "*",
+create_autocmd("CursorHold", {
+	group = create_augroup("ClearCmdOutputAfterTimeout", { clear = true }),
 	callback = function()
-		print(" ")
+		print("")
 	end,
 })
