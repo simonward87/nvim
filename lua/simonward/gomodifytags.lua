@@ -3,6 +3,4 @@ if not status_ok then
 	return
 end
 
-gomodifytags.setup({
-	-- transformation = "snakecase"
-})
+gomodifytags.setup()
