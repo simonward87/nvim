@@ -50,7 +50,10 @@ end
 
 pckr.add({
 	"JoosepAlviste/nvim-ts-context-commentstring", -- Code commenting
-	"L3MON4D3/LuaSnip", -- Snippet engine
+	{
+		"L3MON4D3/LuaSnip", -- Snippet engine
+		run = "make install_jsregexp",
+	},
 	"akinsho/bufferline.nvim", -- List buffers along top
 	"hrsh7th/cmp-buffer", -- Buffer completions
 	"hrsh7th/cmp-cmdline", -- Cmdline completions
