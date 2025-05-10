@@ -70,10 +70,6 @@ function M.on_attach(bufnr)
 	vim.keymap.set("n", "Y", api.fs.copy.relative_path, opts("Copy Relative Path"))
 	vim.keymap.set("n", "<2-LeftMouse>", api.node.open.edit, opts("Open"))
 	vim.keymap.set("n", "<2-RightMouse>", api.tree.change_root_to_node, opts("CD"))
-
-	-- vim.keymap.set("n", "-",     api.tree.change_root_to_parent,        opts("Up"))
-	-- vim.keymap.set("n", "p",     api.fs.paste,                          opts("Paste"))
-	-- vim.keymap.set("n", "q",     api.tree.close,                        opts("Close"))
 end
 
 function M.print_node_path()
