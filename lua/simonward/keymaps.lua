@@ -35,7 +35,7 @@ map("n", "<C-d>", "<C-d>zz")
 map("n", "<C-u>", "<C-u>zz")
 
 -- Toggle ColorColumn
-map("n", "<leader>cc", [[:execute "set cc=" . (&colorcolumn == "" ? "74" : "")<CR>]])
+map("n", "<leader>cc", [[:execute "set cc=" . (&colorcolumn == "" ? "80" : "")<CR>]])
 
 -- Git
 map("n", "<leader>gs", ":G<CR>")
@@ -45,11 +45,7 @@ map("n", "<leader>gl", ":G log<CR>")
 map("n", "<leader>gp", ":G push<CR>")
 
 -- Telescope
-map(
-	"n",
-	"<leader>f",
-	"<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<CR>"
-)
+map("n", "<leader>f", "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown())<CR>")
 map("n", "<c-t>", "<cmd>Telescope live_grep<CR>")
 
 -- File explorer
@@ -74,8 +70,11 @@ vim.cmd("iabbrev fucntion function")
 vim.cmd("iabbrev reutrn return")
 vim.cmd("iabbrev seperate separate")
 vim.cmd("iabbrev teh the")
+vim.cmd("iabbrev dont don't")
 
--- Hide IncSearch on entering INSERT (Paired autocmds: PCLoFRvAUuTj)
+-- Hide IncSearch on exiting insert. nohlsearch doesn't work in an autocommand,
+-- because the highlighting state is saved and restored when executing
+-- autocommands. This map works in tandem with autocmd ResetIncSearchOnEsc.
 map("i", "<Esc>", "<Esc>:nohlsearch<bar>set nolazyredraw<CR>")
 map("i", "<C-c>", "<C-c>:nohlsearch<bar>set nolazyredraw<CR>")
 
