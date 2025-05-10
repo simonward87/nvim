@@ -1,3 +1,3 @@
-local c = "k-day"
+local c = "k-dawn"
 
 vim.cmd("colorscheme " .. c)
