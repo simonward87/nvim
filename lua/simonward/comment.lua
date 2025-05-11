@@ -1,9 +1,9 @@
-local status_ok, comment = pcall(require, "ts_context_commentstring")
+local status_ok, ctx_commentstring = pcall(require, "ts_context_commentstring")
 if not status_ok then
 	return
 end
 
-comment.setup({
+ctx_commentstring.setup({
 	enable_autocmd = false,
 })
 
@@ -11,6 +11,7 @@ comment.setup({
 local get_option = vim.filetype.get_option
 
 vim.filetype.get_option = function(filetype, option)
-	return option == "commentstring" and require("ts_context_commentstring.internal").calculate_commentstring()
+	return option == "commentstring"
+		and require("ts_context_commentstring.internal").calculate_commentstring()
 		or get_option(filetype, option)
 end

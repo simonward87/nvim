@@ -14,7 +14,6 @@ bufferline.setup({
 		offsets = {
 			{
 				filetype = "NvimTree",
-				-- text = "",
 				highlight = "Comment",
 				separator = true,
 				text_align = "left",
