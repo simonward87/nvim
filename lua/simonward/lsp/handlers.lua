@@ -2,13 +2,11 @@ local M = {}
 
 local float_opts = {
 	border = "solid",
-	-- focusable = false,
 	max_width = 68,
 	source = "always",
 	style = "minimal",
 }
 
--- TODO: backfill this to template
 M.setup = function()
 	vim.diagnostic.config({
 		virtual_text = false,
@@ -59,9 +57,12 @@ local function lsp_highlight_document(client)
 	end
 end
 
-local function lsp_keymaps(_bufnr)
-	local opts = { noremap = true, silent = true }
-	vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
+local function lsp_keymaps(bufnr)
+	local opts = {
+		buffer = bufnr,
+		noremap = true,
+		silent = true
+	}
 
 	vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
 	vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
@@ -91,6 +92,7 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 
 local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 if not status_ok then
+	print("Error loading cmp_nvim_lsp")
 	return
 end
 

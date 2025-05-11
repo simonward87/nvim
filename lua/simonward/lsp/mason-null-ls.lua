@@ -6,6 +6,39 @@ end
 local diagnostics = null_ls.builtins.diagnostics
 local formatting = null_ls.builtins.formatting
 
+local opts = {
+	prettierd = {
+		filetypes = {
+			"css",
+			"html",
+			"graphql",
+			"javascript",
+			"javascriptreact",
+			"json",
+			"less",
+			"scss",
+			"typescript",
+			"typescriptreact",
+			"vue",
+			"yaml",
+		},
+		extra_args = { "--jsx-single-quote" },
+		extra_filetypes = { "astro", "svelte" },
+	},
+
+	sqlfluff = {
+		-- args defines the default execution command
+		args = {
+			"fix",
+			"--disable-progress-bar",
+			"--nocolor",
+			"-",
+		},
+		-- extra_args defines optional settings
+		extra_args = { "--dialect", "postgres" },
+	},
+}
+
 -- Manual source setup to prevent overlap between different sources
 -- (e.g. two formatters both trying to format on save, etc.)
 null_ls.setup({
@@ -20,35 +53,8 @@ null_ls.setup({
 
 		formatting.buf,
 		formatting.clang_format,
-		formatting.prettierd.with({
-			filetypes = {
-				"css",
-				"html",
-				"graphql",
-				"javascript",
-				"javascriptreact",
-				"json",
-				"less",
-				"scss",
-				"typescript",
-				"typescriptreact",
-				"vue",
-				"yaml",
-			},
-			extra_args = { "--jsx-single-quote" },
-			extra_filetypes = { "astro", "svelte" },
-		}),
-		formatting.sqlfluff.with({
-			-- args defines the default execution command
-			args = {
-				"fix",
-				"--disable-progress-bar",
-				"--nocolor",
-				"-",
-			},
-			-- extra_args defines optional settings
-			extra_args = { "--dialect", "postgres" },
-		}),
+		formatting.prettierd.with(opts.prettierd),
+		formatting.sqlfluff.with(opts.sqlfluff),
 		formatting.stylua,
 	},
 	on_attach = function()

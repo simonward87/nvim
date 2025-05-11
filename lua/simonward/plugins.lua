@@ -1,3 +1,5 @@
+--# selene: allow(mixed_table)
+
 local function bootstrap_pckr()
 	local pckr_path = vim.fn.stdpath("data") .. "/pckr/pckr.nvim"
 
@@ -16,17 +18,18 @@ end
 
 bootstrap_pckr()
 
-local status_ok, pckr = pcall(require, "pckr")
-if not status_ok then
+local pckr_ok, pckr = pcall(require, "pckr")
+if not pckr_ok then
+	print("Error loading pckr")
 	return
 end
 
 if (vim.uv or vim.loop).os_uname().sysname == "Darwin" then
 	local plugins = "~/Work/projects/plugins/nvim/"
 	pckr.add({
-		plugins .. "k",
-		plugins .. "monoLemon",
-		plugins .. "unnamed",
+		plugins .. "k", -- Theme
+		plugins .. "monoLemon", -- Theme
+		plugins .. "unnamed", -- Theme
 
 		"b0o/SchemaStore.nvim", -- Schemastore catalog access
 		{
@@ -36,7 +39,6 @@ if (vim.uv or vim.loop).os_uname().sysname == "Darwin" then
 				"nvimtools/none-ls.nvim",
 			},
 		},
-		"neovim/nvim-lspconfig", -- Enable LSP
 		"sago35/tinygo.vim", -- Tinygo extension
 		"tamago324/nlsp-settings.nvim", -- Json lsp config parser
 		"williamboman/mason.nvim", -- Package manager
@@ -44,7 +46,7 @@ if (vim.uv or vim.loop).os_uname().sysname == "Darwin" then
 	})
 else
 	pckr.add({
-		"simonward87/k.nvim",
+		"simonward87/k.nvim", -- Theme
 	})
 end
 
@@ -67,23 +69,23 @@ pckr.add({
 	"norcalli/nvim-colorizer.lua", -- Hex code colourizer
 	"nvim-lua/popup.nvim", -- Popup API
 	{
-		"nvim-telescope/telescope.nvim",
+		"nvim-telescope/telescope.nvim", -- Extendable fuzzy finder
 		requires = { "nvim-lua/plenary.nvim" },
 	}, -- Fuzzy finder
 	{
-		"nvim-tree/nvim-tree.lua",
+		"nvim-tree/nvim-tree.lua", -- File explorer tree
 		requires = { "nvim-tree/nvim-web-devicons" },
 	}, -- File explorer
 	{
-		"nvim-treesitter/nvim-treesitter",
+		"nvim-treesitter/nvim-treesitter", -- Treesitter configurations
 		run = ":TSUpdate",
 	},
-	"nvim-treesitter/nvim-treesitter-context", -- Pin code context (current block)
+	"nvim-treesitter/nvim-treesitter-context", -- Pin code context
 	"nvim-treesitter/playground", -- View treesitter info
 	"rafamadriz/friendly-snippets", -- Snippet library
 	"saadparwaiz1/cmp_luasnip", -- Snippet completions
 	{
-		"simondrake/gomodifytags",
+		"simondrake/gomodifytags", -- Manage field tags in structs
 		requires = {
 			"nvim-treesitter/nvim-treesitter",
 			run = ":TSUpdate",
@@ -97,6 +99,6 @@ pckr.add({
 })
 
 pckr.setup({
-	autoremove = true, -- Remove unused plugins
-	autoinstall = true, -- Auto install plugins
+	autoremove = true,
+	autoinstall = true,
 })
