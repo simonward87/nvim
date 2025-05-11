@@ -37,6 +37,22 @@ map("n", "<C-u>", "<C-u>zz")
 -- Toggle ColorColumn
 map("n", "<leader>cc", [[:execute "set cc=" . (&colorcolumn == "" ? "80" : "")<CR>]])
 
+-- Lsp
+map("n", "gD", vim.lsp.buf.declaration)
+map("n", "gd", vim.lsp.buf.definition)
+map("n", "K", vim.lsp.buf.hover)
+map("n", "gi", vim.lsp.buf.implementation)
+map("n", "<C-k>", vim.lsp.buf.signature_help)
+map("n", "gr", vim.lsp.buf.references)
+map("n", "gl", vim.diagnostic.open_float)
+map("n", "[d", function()
+	vim.diagnostic.jump({ count = -1, float = true })
+end)
+map("n", "[d", function()
+	vim.diagnostic.jump({ count = 1, float = true })
+end)
+map("n", "<leader>q", vim.diagnostic.setloclist)
+
 -- Git
 map("n", "<leader>gs", ":G<CR>")
 map("n", "<leader>gc", ":G commit -v -q<CR>")

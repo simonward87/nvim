@@ -35,14 +35,15 @@ if (vim.uv or vim.loop).os_uname().sysname == "Darwin" then
 		{
 			"jay-babu/mason-null-ls.nvim", -- Formatters and linters
 			requires = {
-				"williamboman/mason.nvim",
+				"mason-org/mason.nvim",
 				"nvimtools/none-ls.nvim",
 			},
 		},
+		"mason-org/mason-lspconfig.nvim", -- Package manager
+		"mason-org/mason.nvim", -- Package manager
+		"neovim/nvim-lspconfig", -- Enable LSP
 		"sago35/tinygo.vim", -- Tinygo extension
 		"tamago324/nlsp-settings.nvim", -- Json lsp config parser
-		"williamboman/mason.nvim", -- Package manager
-		"williamboman/mason-lspconfig.nvim", -- Package manager
 	})
 else
 	pckr.add({

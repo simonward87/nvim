@@ -39,7 +39,7 @@ local ensure_installed = {
 	"ts_ls",
 }
 
-for _, server in pairs(ensure_installed) do
+for _, server in ipairs(ensure_installed) do
 	local opts = {}
 
 	local handlers_ok, handlers = pcall(require, "simonward.lsp.handlers")
@@ -62,6 +62,8 @@ for _, server in pairs(ensure_installed) do
 	vim.lsp.config(server, opts)
 end
 
+-- https://github.com/mason-org/mason-lspconfig.nvim?tab=readme-ov-file#table-of-contents
+
 local mason_lspconfig_ok, mason_lspconfig = pcall(require, "mason-lspconfig")
 if not mason_lspconfig_ok then
 	print("Error loading mason-lspconfig")
@@ -69,6 +71,5 @@ if not mason_lspconfig_ok then
 end
 
 mason_lspconfig.setup({
-	automatic_installation = true,
 	ensure_installed = ensure_installed,
 })
