@@ -1,4 +1,3 @@
-# permits usage of vim global throughout config
 ---
 globals:
   vim:

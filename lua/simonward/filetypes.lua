@@ -10,9 +10,11 @@ vim.filetype.add({
 	},
 	filename = {
 		["Caddyfile"] = "caddyfile",
-		["gitconfig"] = "gitconfig",
-		["sqliterc"] = "sh",
-		["zprofile"] = "zsh",
+		["clang-format"] = "yaml",
+		gitconfig = "gitconfig",
+		sqlfluff = "toml",
+		sqliterc = "sh",
+		zprofile = "zsh",
 	},
 	pattern = {
 		[".env.*"] = "sh",
