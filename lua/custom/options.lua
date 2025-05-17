@@ -1,11 +1,6 @@
 vim.opt.backup = false
 vim.opt.clipboard:append("unnamedplus")
-vim.opt.completeopt = {
-	"menuone",
-	"longest",
-	"noinsert",
-	"noselect",
-}
+vim.opt.completeopt = { "menuone", "longest", "noinsert", "noselect" }
 vim.opt.cursorline = true
 vim.opt.expandtab = true
 vim.opt.fillchars = "eob: "
@@ -27,4 +22,3 @@ vim.opt.tabstop = 4
 vim.opt.termguicolors = true
 vim.opt.undofile = true
 vim.opt.wrap = false
--- vim.opt.cmdheight = 0 -- experimental, :h 'cmdheight'

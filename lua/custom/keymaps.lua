@@ -1,7 +1,7 @@
-local function map(mode, l, r, opts)
+local function map(mode, lhs, rhs, opts)
 	local defaults = { noremap = true, silent = true }
 	opts = opts or defaults
-	vim.keymap.set(mode, l, r, opts)
+	vim.keymap.set(mode, lhs, rhs, opts)
 end
 
 -- Navigation

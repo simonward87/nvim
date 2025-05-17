@@ -8,7 +8,6 @@ local diagnostics = null_ls.builtins.diagnostics
 local formatting = null_ls.builtins.formatting
 
 -- https://github.com/nvimtools/none-ls.nvim/blob/main/doc/BUILTINS.md
-
 local ensure_installed = {
 	"buf",
 	"checkmake",
@@ -33,10 +32,10 @@ local ensure_installed = {
 	"zsh",
 }
 
--- Manual source setup to prevent overlap between different sources
--- (e.g. two formatters both trying to format on save, etc.)
+-- Manual source setup to prevent overlap between different sources (e.g. two
+-- formatters both trying to format on save)
+-- https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/CONFIG.md#options
 null_ls.setup({
-	debug = false,
 	sources = {
 		diagnostics.buf,
 		diagnostics.checkmake,
@@ -50,13 +49,9 @@ null_ls.setup({
 		diagnostics.staticcheck,
 		diagnostics.yamllint,
 		diagnostics.zsh,
-
 		formatting.buf,
 		formatting.clang_format,
-		formatting.prettierd.with({
-			extra_args = { "--jsx-single-quote" },
-			extra_filetypes = { "astro", "svelte" },
-		}),
+		formatting.prettierd.with({ extra_filetypes = { "astro", "svelte" }}),
 		formatting.sqlfluff,
 		formatting.stylua,
 	},
@@ -66,7 +61,9 @@ null_ls.setup({
 				"FormatBufferOnWrite",
 				{ clear = true }
 			),
-			callback = vim.lsp.buf.format,
+			callback = function()
+				vim.lsp.buf.format()
+			end
 		})
 	end,
 })
