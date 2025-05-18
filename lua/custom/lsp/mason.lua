@@ -18,6 +18,10 @@ mason.setup({
 	},
 })
 
+-- Config list
+-- :h lspconfig-all
+-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#lua_ls
+
 local ensure_installed = {
 	"arduino_language_server",
 	"astro",

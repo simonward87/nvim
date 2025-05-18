@@ -3,14 +3,17 @@ return {
 		Lua = {
 			runtime = {
 				version = "LuaJIT",
-			},
-			diagnostics = {
-				globals = { "vim" },
+				path = {
+					"lua/?.lua",
+					"lua/?/init.lua",
+				},
 			},
 			workspace = {
+				checkThirdParty = false,
 				library = {
-					[vim.fn.expand("$VIMRUNTIME/lua")] = true,
-					[vim.fn.stdpath("config") .. "/lua"] = true,
+					vim.env.VIMRUNTIME,
+					"${3rd}/luv/library",
+					"${3rd}/busted/library",
 				},
 			},
 		},
