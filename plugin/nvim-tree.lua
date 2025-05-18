@@ -5,6 +5,8 @@ if not api_status_ok then
 	return
 end
 
+vim.keymap.set("n", "-", api.tree.toggle, { noremap = true, silent = true })
+
 local tree_status_ok, nvim_tree = pcall(require, "nvim-tree")
 if not tree_status_ok then
 	return

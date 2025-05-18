@@ -24,6 +24,10 @@ if not pckr_ok then
 	return
 end
 
+vim.keymap.set("n", "<leader>up", function()
+	vim.cmd("Pckr sync")
+end, { noremap = true, silent = true })
+
 if vim.uv.os_uname().sysname == "Darwin" then
 	local plugins = "~/Work/projects/plugins/nvim/"
 	pckr.add({

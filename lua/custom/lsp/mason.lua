@@ -4,6 +4,10 @@ if not mason_ok then
 	return
 end
 
+vim.keymap.set("n", "<leader>um", function()
+	vim.cmd("Mason")
+end, { noremap = true, silent = true })
+
 mason.setup({
 	ui = {
 		icons = {
@@ -63,14 +67,13 @@ for _, server in ipairs(ensure_installed) do
 	vim.lsp.config(server, opts)
 end
 
--- https://github.com/mason-org/mason-lspconfig.nvim?tab=readme-ov-file#table-of-contents
-
 local mason_lspconfig_ok, mason_lspconfig = pcall(require, "mason-lspconfig")
 if not mason_lspconfig_ok then
 	print("Error loading mason-lspconfig")
 	return
 end
 
+-- https://github.com/mason-org/mason-lspconfig.nvim?tab=readme-ov-file#table-of-contents
 mason_lspconfig.setup({
 	ensure_installed = ensure_installed,
 })

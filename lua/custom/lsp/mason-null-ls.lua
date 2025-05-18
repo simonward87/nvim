@@ -45,25 +45,22 @@ null_ls.setup({
 		diagnostics.hadolint,
 		diagnostics.pylint,
 		diagnostics.selene,
-		diagnostics.sqlfluff,
+		-- diagnostics.sqlfluff,
 		diagnostics.staticcheck,
 		diagnostics.yamllint,
 		diagnostics.zsh,
 		formatting.buf,
 		formatting.clang_format,
-		formatting.prettierd.with({ extra_filetypes = { "astro", "svelte" }}),
+		formatting.prettierd.with({ extra_filetypes = { "astro", "svelte" } }),
 		formatting.sqlfluff,
 		formatting.stylua,
 	},
 	on_attach = function()
 		vim.api.nvim_create_autocmd("BufWritePre", {
-			group = vim.api.nvim_create_augroup(
-				"FormatBufferOnWrite",
-				{ clear = true }
-			),
+			group = vim.api.nvim_create_augroup("FormatBufferOnWrite", { clear = true }),
 			callback = function()
 				vim.lsp.buf.format()
-			end
+			end,
 		})
 	end,
 })

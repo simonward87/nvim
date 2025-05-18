@@ -33,14 +33,8 @@ gitsigns.setup({
 		row = 0,
 		col = 1,
 	},
-	on_attach = function(bufnr)
-		local function map(mode, lhs, rhs, opts)
-			opts = opts or {}
-			opts.buffer = bufnr
-			vim.keymap.set(mode, lhs, rhs, opts)
-		end
-
-		map("n", "<leader>ts", gitsigns.toggle_linehl)
-		map("n", "<leader>tb", gitsigns.toggle_current_line_blame)
+	on_attach = function(_bufnr)
+		vim.keymap.set("n", "<leader>ts", gitsigns.toggle_linehl, { noremap = true, silent = true })
+		vim.keymap.set("n", "<leader>tb", gitsigns.toggle_current_line_blame, { noremap = true, silent = true })
 	end,
 })
