@@ -45,7 +45,6 @@ null_ls.setup({
 		diagnostics.hadolint,
 		diagnostics.pylint,
 		diagnostics.selene,
-		-- diagnostics.sqlfluff,
 		diagnostics.staticcheck,
 		diagnostics.yamllint,
 		diagnostics.zsh,

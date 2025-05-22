@@ -3,6 +3,14 @@ local function map(mode, lhs, rhs, opts)
 	vim.keymap.set(mode, lhs, rhs, opts or defaults)
 end
 
+-- For key representations, :help keycodes
+
+-- Unbind arrow keys
+map("n", "<Left>", "<Nop>")
+map("n", "<Down>", "<Nop>")
+map("n", "<Up>", "<Nop>")
+map("n", "<Right>", "<Nop>")
+
 map("n", "<C-n>", ":bn<CR>") -- Move to next buffer
 map("n", "<C-p>", ":bp<CR>") -- Move to previous buffer
 map("n", "<leader>d", ":bd<CR>") -- Delete current buffer
