@@ -1,6 +1,6 @@
 local null_ls_ok, null_ls = pcall(require, "null-ls")
 if not null_ls_ok then
-	print("Error loading null-ls")
+	print("Error loading plugin: null-ls")
 	return
 end
 
@@ -66,7 +66,7 @@ null_ls.setup({
 
 local mason_null_ls_status_ok, mason_null_ls = pcall(require, "mason-null-ls")
 if not mason_null_ls_status_ok then
-	print("Error loading mason-null-ls")
+	print("Error loading plugin: mason-null-ls")
 	return
 end
 

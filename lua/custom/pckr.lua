@@ -20,7 +20,7 @@ bootstrap_pckr()
 
 local pckr_ok, pckr = pcall(require, "pckr")
 if not pckr_ok then
-	print("Error loading pckr")
+	print("Error loading plugin: pckr")
 	return
 end
 

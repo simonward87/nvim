@@ -67,7 +67,7 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 
 local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 if not status_ok then
-	print("Error loading cmp_nvim_lsp")
+	print("Error loading plugin: cmp_nvim_lsp")
 	return
 end
 

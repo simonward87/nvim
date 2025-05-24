@@ -3,6 +3,7 @@ vim.filetype.add({
 	extension = {
 		envrc = "sh",
 		gohtml = "html",
+		mdx = "mdx",
 		sqlfluff = "toml",
 		sqliterc = "sh",
 		templ = "templ",

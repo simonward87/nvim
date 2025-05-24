@@ -1,6 +1,6 @@
 local mason_ok, mason = pcall(require, "mason")
 if not mason_ok then
-	print("Error loading mason")
+	print("Error loading plugin: mason")
 	return
 end
 
@@ -29,7 +29,6 @@ local ensure_installed = {
 	"clangd",
 	"cssls",
 	"cssmodules_ls",
-	"denols",
 	"docker_compose_language_service",
 	"dockerls",
 	"gopls",
@@ -58,7 +57,7 @@ for _, server in ipairs(ensure_installed) do
 			capabilities = handlers.capabilities,
 		}
 	else
-		print("Error loading custom/lsp/handlers.lua")
+		print("Error loading config: custom/lsp/handlers.lua")
 	end
 
 	server = vim.split(server, "@")[1]
@@ -69,15 +68,19 @@ for _, server in ipairs(ensure_installed) do
 	end
 
 	vim.lsp.config(server, opts)
+	vim.lsp.enable(server)
 end
 
 local mason_lspconfig_ok, mason_lspconfig = pcall(require, "mason-lspconfig")
 if not mason_lspconfig_ok then
-	print("Error loading mason-lspconfig")
+	print("Error loading plugin: mason-lspconfig")
 	return
 end
 
+-- All setups are handled manually via mason, mason_lspconfig is being used
+-- only to automate server installation
 -- https://github.com/mason-org/mason-lspconfig.nvim?tab=readme-ov-file#table-of-contents
 mason_lspconfig.setup({
+	automatic_enable = false,
 	ensure_installed = ensure_installed,
 })
