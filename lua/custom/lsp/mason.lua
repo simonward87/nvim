@@ -71,6 +71,8 @@ for _, server in ipairs(ensure_installed) do
 	vim.lsp.enable(server)
 end
 
+-- vim.lsp.enable(ensure_installed)
+
 local mason_lspconfig_ok, mason_lspconfig = pcall(require, "mason-lspconfig")
 if not mason_lspconfig_ok then
 	print("Error loading plugin: mason-lspconfig")
