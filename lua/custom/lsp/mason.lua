@@ -57,7 +57,7 @@ for _, server in ipairs(ensure_installed) do
 			capabilities = handlers.capabilities,
 		}
 	else
-		print("Error loading config: custom/lsp/handlers.lua")
+		print("Error loading plugin: custom.lsp.handlers")
 	end
 
 	server = vim.split(server, "@")[1]

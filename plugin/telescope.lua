@@ -31,6 +31,8 @@ local opts = {
 local get_ivy_ok, theme_opts = pcall(require("telescope.themes").get_ivy, opts)
 if get_ivy_ok then
 	opts.defaults = vim.tbl_deep_extend("force", theme_opts, opts)
+else
+	print("Error loading function: telescope.themes.get_ivy")
 end
 
 local telescope_ok, telescope = pcall(require, "telescope")

@@ -2,13 +2,15 @@ local M = {}
 
 local api_status_ok, api = pcall(require, "nvim-tree.api")
 if not api_status_ok then
+	print("Error loading plugin: nvim-tree.api")
 	return
 end
 
 vim.keymap.set("n", "-", api.tree.toggle, { noremap = true, silent = true })
 
-local tree_status_ok, nvim_tree = pcall(require, "nvim-tree")
-if not tree_status_ok then
+local nvim_tree_status_ok, nvim_tree = pcall(require, "nvim-tree")
+if not nvim_tree_status_ok then
+	print("Error loading plugin: nvim-tree")
 	return
 end
 

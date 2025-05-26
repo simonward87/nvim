@@ -1,5 +1,6 @@
 local status_ok, ctx_commentstring = pcall(require, "ts_context_commentstring")
 if not status_ok then
+	print("Error loading plugin: ts_context_commentstring")
 	return
 end
 
@@ -11,7 +12,6 @@ ctx_commentstring.setup({
 local get_option = vim.filetype.get_option
 
 vim.filetype.get_option = function(filetype, option)
-	return option == "commentstring"
-		and require("ts_context_commentstring.internal").calculate_commentstring()
+	return option == "commentstring" and require("ts_context_commentstring.internal").calculate_commentstring()
 		or get_option(filetype, option)
 end

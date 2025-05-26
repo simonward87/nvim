@@ -1,5 +1,6 @@
 local status_ok, autopairs = pcall(require, "nvim-autopairs")
 if not status_ok then
+	print("Error loading plugin: nvim-autopairs")
 	return
 end
 
@@ -27,6 +28,7 @@ autopairs.setup({
 local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 local cmp_status_ok, cmp = pcall(require, "cmp")
 if not cmp_status_ok then
+	print("Error loading plugin: nvim-autopairs.completion.cmp")
 	return
 end
 
