@@ -5,7 +5,7 @@ require("custom.keymaps")
 require("custom.autocmd")
 require("custom.pckr")
 
-vim.cmd("colorscheme k-dawn")
+vim.cmd("colorscheme k-day")
 
 if vim.uv.os_uname().sysname == "Darwin" then
 	require("custom.lsp")
