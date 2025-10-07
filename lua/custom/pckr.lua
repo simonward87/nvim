@@ -32,6 +32,7 @@ if vim.uv.os_uname().sysname == "Darwin" then
 	local plugins = "~/Work/projects/plugins/nvim/"
 	pckr.add({
 		plugins .. "k.nvim", -- Theme
+		plugins .. "tidy.nvim", -- Theme
 		plugins .. "unnamed.nvim", -- Theme
 
 		"b0o/SchemaStore.nvim", -- Schemastore catalog access

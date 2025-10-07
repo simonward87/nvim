@@ -14,7 +14,6 @@ mason_null_ls.setup({
 	ensure_installed = {
 		"buf",
 		"checkmake",
-		"chrome-debug-adapter",
 		"clang_format",
 		"cmake_lint",
 		"delve",
@@ -25,7 +24,6 @@ mason_null_ls.setup({
 		"golangci_lint", -- also try revive
 		"hadolint",
 		"js-debug-adapter",
-		"node-debug2-adapter",
 		"prettierd",
 		"pylint",
 		"selene",
