@@ -63,9 +63,27 @@ map("n", "K", vim.lsp.buf.hover)
 map("i", "<Esc>", "<Esc>:nohlsearch<bar>set nolazyredraw<CR>")
 map("i", "<C-c>", "<C-c>:nohlsearch<bar>set nolazyredraw<CR>")
 
-vim.cmd("iabbrev @@ 39803787+simonward87@users.noreply.github.com")
-vim.cmd("iabbrev fucntion function")
-vim.cmd("iabbrev reutrn return")
-vim.cmd("iabbrev seperate separate")
-vim.cmd("iabbrev teh the")
-vim.cmd("iabbrev dont don't")
+-- Utility abbreviations
+map("ia", "@@", "39803787+simonward87@users.noreply.github.com")
+map("!a", "dd", function()
+	return os.date("%Y-%m-%d") -- :h os.date()
+end, { expr = true })
+map("!a", "dt", function()
+	return os.date("!%Y-%m-%dT%H:%M:%SZ") -- '!' prefix returns UTC time
+end, { expr = true })
+
+-- Code autocorrect
+map("ia", "fucntion", "function")
+map("ia", "reutrn", "return")
+
+-- Copy autocorrect
+map("ia", "backend", "back-end")
+map("ia", "Backend", "Back-end")
+map("ia", "dont", "don't")
+map("ia", "Dont", "Don't")
+map("ia", "frontend", "front-end")
+map("ia", "Frontend", "Front-end")
+map("ia", "seperate", "separate")
+map("ia", "Seperate", "Separate")
+map("ia", "teh", "the")
+map("ia", "Teh", "The")
