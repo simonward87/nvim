@@ -4,8 +4,10 @@ vim.opt_local.spell = true
 
 local function map(mode, lhs, rhs, opts)
 	local defaults = { noremap = true, silent = true }
-	opts = vim.tbl_extend("force", defaults, opts)
-	vim.keymap.set(mode, lhs, rhs, opts)
+	if opts then
+		opts = vim.tbl_extend("force", defaults, opts)
+	end
+	vim.keymap.set(mode, lhs, rhs, opts or defaults)
 end
 
 map("n", "<leader>cb", "viw<esc>bi**<esc>ea**<esc>", { desc = "Format word under cursor in bold" })
@@ -52,3 +54,5 @@ map(
 	[[:s/\v\`([^`]+)\`/<code>\1<\/code>/g<CR>gv:s/\v\*{2}([^*]+)\*{2}/<strong>\1<\/strong>/g<CR>]],
 	{ desc = "Convert selection bold and code to HTML bold and code" }
 )
+
+map("ia", "base64", "Base64")

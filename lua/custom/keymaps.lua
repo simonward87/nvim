@@ -65,9 +65,11 @@ map("i", "<C-c>", "<C-c>:nohlsearch<bar>set nolazyredraw<CR>")
 
 -- Utility abbreviations
 map("ia", "@@", "39803787+simonward87@users.noreply.github.com")
+
 map("!a", "dd", function()
 	return os.date("%Y-%m-%d") -- :h os.date()
 end, { expr = true })
+
 map("!a", "dt", function()
 	return os.date("!%Y-%m-%dT%H:%M:%SZ") -- '!' prefix returns UTC time
 end, { expr = true })
