@@ -1,15 +1,11 @@
-local actions = require("telescope.actions")
 local builtin = require("telescope.builtin")
 
-local function map(mode, lhs, rhs, opts)
-	local defaults = { noremap = true, silent = true }
-	vim.keymap.set(mode, lhs, rhs, opts or defaults)
-end
+vim.keymap.set("n", "<leader>f", builtin.find_files, { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>h", builtin.help_tags, { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>m", builtin.keymaps, { noremap = true, silent = true })
+vim.keymap.set("n", "<C-t>", builtin.live_grep, { noremap = true, silent = true })
 
-map("n", "<leader>f", builtin.find_files)
-map("n", "<leader>h", builtin.help_tags)
-map("n", "<leader>m", builtin.keymaps)
-map("n", "<C-t>", builtin.live_grep)
+local actions = require("telescope.actions")
 
 local opts = {
 	defaults = {
