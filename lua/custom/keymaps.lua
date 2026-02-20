@@ -14,7 +14,6 @@ map("n", "<Right>", "<Nop>")
 map("n", "<C-n>", ":bn<CR>") -- Move to next buffer
 map("n", "<C-p>", ":bp<CR>") -- Move to previous buffer
 map("n", "<leader>d", ":bd<CR>") -- Delete current buffer
-map("n", "tt", ":tab split<CR>") -- Open current buffer in new tab
 map("n", "<leader>nw", ":noa w<CR>") -- Save without autoformat
 map("n", "<Esc>", print) -- Clear cmd output
 
@@ -66,11 +65,11 @@ map("i", "<C-c>", "<C-c>:nohlsearch<bar>set nolazyredraw<CR>")
 -- Utility abbreviations
 map("ia", "@@", "39803787+simonward87@users.noreply.github.com")
 
-map("!a", "dd", function()
+map("!a", "=d", function()
 	return os.date("%Y-%m-%d") -- :h os.date()
 end, { expr = true })
 
-map("!a", "dt", function()
+map("!a", "=t", function()
 	return os.date("!%Y-%m-%dT%H:%M:%SZ") -- '!' prefix returns UTC time
 end, { expr = true })
 
