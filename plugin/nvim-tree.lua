@@ -14,18 +14,27 @@ end
 
 function M.on_attach(bufnr)
 	local set = vim.keymap.set
+
 	local opts = function(desc)
 		return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
 	end
 
-	-- :help nvim-tree-mappings-default
+	local function nop(message)
+		return function()
+			print(message)
+		end
+	end
+
+	-- sets up default mappings (:help nvim-tree-mappings-default)
+	api.map.on_attach.default(bufnr)
+
 	set("n", "-", api.tree.close, opts("Close"))
 	set("n", "?", api.tree.toggle_help, opts("Help"))
+	set("n", "d", nop("Delete with 'D'"), opts("Binding Unset"))
+	set("n", "H", api.filter.dotfiles.toggle, opts("Toggle Filter: Dotfiles"))
 	set("n", "h", api.node.navigate.parent_close, opts("Close Directory"))
 	set("n", "l", api.node.open.edit, opts("Edit"))
-	set("n", "q", function()
-		print("Updated to '-'")
-	end, opts("Unset"))
+	set("n", "q", nop("Close with '-'"), opts("Binding Unset"))
 end
 
 nvim_tree.setup({
@@ -65,6 +74,7 @@ nvim_tree.setup({
 					untracked = "󰐕", -- default: ★  alt: 󰽤 󰝵
 				},
 			},
+			diagnostics_placement = "after",
 		},
 		indent_markers = { enable = true },
 		root_folder_label = false,
